@@ -7,9 +7,9 @@ const sync = ()=>{
 
 const seed = ()=>{
     return Promise.all([
-        Employee.create({email: 'john_gross@gmail.com'}),
-        Employee.create({email: 'josh_weiss@gmail.com', managerId: 1}),
-        Employee.create({email: 'joe_wine@gmail.com', managerId: 1}),
+        Employee.create({email: 'Bernetta_Nivens@gmail.com'}),
+        Employee.create({email: 'Garland_Leal@gmail.com', managerId: 1}),
+        Employee.create({email: 'Brent_Berube@gmail.com', managerId: 1}),
     ])
 
 

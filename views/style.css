@@ -1,4 +1,12 @@
-.flex-container{
+.employee-container{
     display: flex;
     flex-flow: row wrap;
+}
+
+.employee{
+    width: 30%;
+}
+
+.employee-btn{
+    padding: 5 0px;
 }
