@@ -10,8 +10,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded())
 app.use(require('method-override')('_method'))
 const path = require('path')
-
-app.use('/vendor', express.static(path.join(__dirname, "node_modules")))
+app.use('/views', express.static('./views'))
+app.use('/vendor', express.static("./node_modules"))
 
 db.sync()
     .then(()=>db.seed())
