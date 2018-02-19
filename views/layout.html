@@ -7,12 +7,14 @@
     </head>
     <body>
         <div class="container">
-            <h1>We have <span class="badge badge-success">{{employeeCount}}</span> employee{% if employeeCount > 1 or employeeCount === 0 %}s{% endif %} and <span class="badge badge-success">{{managerCount}}</span> manager{% if managerCount > 1 or managerCount === 0 %}s{% endif %}</h1>
-            <div style="padding: 5px;">
+            
+            <div style="padding: 15 0px;">
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a href='/' class="nav-link {%if path === '/'%}active{%endif%}">Home</a></li>
                     <li class="nav-item"><a href='/employees' class="nav-link {%if path === '/employees'%}active{%endif%}">Employees</a></li>
+                    
                 </ul>
+                <h3 class="nav-link">We have <span class="badge badge-success">{{employeeCount}}</span> employee{% if employeeCount > 1 or employeeCount === 0 %}s{% endif %} and <span class="badge badge-success">{{managerCount}}</span> manager{% if managerCount > 1 or managerCount === 0 %}s{% endif %}</h3>
             </div>
            
             {% block content %}
