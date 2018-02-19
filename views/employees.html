@@ -1,0 +1,48 @@
+{% extends './layout.html'  %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="card bg-light">
+                <div class="card-body form-group">
+                <form method="POST" action="/employees">
+                <label>Email</label>
+                <input name="email" class="form-control"/>
+                </br>
+                <label>Manager</label>
+                <select name="managerId" class="form-control">
+                    <option value="-1">none</option>
+                    {% for employee in employees %}
+                    <option value="{{employee.id}}">{{employee.email}}</option>
+                    {% endfor %}
+                </select>
+                <div>
+                    <button class="form-control btn btn-primary">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+            {% for employee in employees %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body form-group">
+                    <form method="POST">
+                        <h5 class="card-title">{{employee.name}}</h5>
+                        <input name='email' value='{{employee.email}}' class="form-control"/>
+                        <div>Provider: {{employee.emailProvider}}</div>
+                        <select name="managerId" class="form-control">
+                                <option value="-1">none</option>
+                                {% for manager in employees %}
+                                    {% if manager.id !== employee.id%}<option value="{{manager.id}}" {%if manager.id === employee.managerId %}selected{%endif%}>{{manager.email}}</option>{%endif%}
+                                {% endfor %}
+                            </select>
+                        <button formaction="/employees/{{employee.id}}?_method=patch" class="form-control btn btn-warning">Update</button>
+                        <button formaction="/employees/{{employee.id}}?_method=delete" class="form-control btn btn-danger">Delete</button>
+                    </form>
+                {% if employee.worker.length > 0 %}
+                <div class="card-subtitle mb-2"><span class='badge badge-dark'>{{employee.email}}</span> manages {% for worker in employee.worker %} <span class="badge badge-success">{{worker.email}}</span> {%endfor%}</div>
+                {% endif %}
+            </div></div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

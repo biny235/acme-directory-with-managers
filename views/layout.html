@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css'/>
+        <link rel='stylesheet' href='/vies/style.css'/>
+    </head>
+    <body>
+        <div class="container">
+            <h1>We have <span class="badge badge-success">{{employeeCount}}</span> employee{% if employeeCount > 1 or employeeCount === 0 %}s{% endif %} and <span class="badge badge-success">{{managerCount}}</span> manager{% if managerCount > 1 or managerCount === 0 %}s{% endif %}</h1>
+            <div style="padding: 5px;">
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href='/' class="nav-link {%if path === '/'%}active{%endif%}">Home</a></li>
+                    <li class="nav-item"><a href='/employees' class="nav-link {%if path === '/employees'%}active{%endif%}">Employees</a></li>
+                </ul>
+            </div>
+           
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+    </body>
+
+</html>
